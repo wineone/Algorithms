@@ -24,7 +24,7 @@ int main(){
 	while(edges--){
 		scanf("%d %d", &vert1, &vert2);
 		lst_adj[vert1].push_back(vert2);
-		lst_adj[vert2].push_back(vert1);
+		lst_adj[vert2].push_back(vert1); // bidirectional
 	}
 	scanf("%d %d", &source, &target);
 	dfs(source);
