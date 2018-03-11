@@ -7,7 +7,7 @@ using namespace std;
 
 typedef long long int lld;
 
-#define MAX (int)1000000000
+#define MAX (int)10e5
 
 bitset<MAX> eh_primo;
 vector<lld> primos;
@@ -22,7 +22,7 @@ lld crivo(){
         eh_primo[j] = true;
       }
       primos.push_back(i);
-      printf("%lld ", i);
+      printf("%lld\n", i);
       quant ++;
     }
   }
