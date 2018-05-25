@@ -16,7 +16,6 @@ void fleury_algorithm(int no){
     for(int i=0; i<tree[no].size(); i++){
         int v = tree[no][i];
         if(tree[v].size() > 1){
-            printf("{%d %d}\n", no, v);
             euler_circuit.push_back(make_pair(no, v));
             tree[no].erase(tree[no].begin() + i);
             for(int k=0; k<tree[v].size(); k++){
@@ -25,7 +24,6 @@ void fleury_algorithm(int no){
                     break;
                 }
             }
-            
             fleury_algorithm(v);
             break;
         }
@@ -34,7 +32,12 @@ void fleury_algorithm(int no){
     if(tree[no].size() == 1){
         euler_circuit.push_back(make_pair(no, tree[no][0]));
         tree[no].erase(tree[no].begin());
-        tree[tree[no][0]].erase(tree[tree[no][0]].begin());
+        for(int k=0; k<tree[tree[no][0]].size(); k++){
+            if(tree[tree[no][0]][k] == no){
+                tree[tree[no][0]].erase(tree[tree[no][0]].begin() + k);
+                break;
+            }
+        }
         fleury_algorithm(tree[no][0]);
     }
 }
